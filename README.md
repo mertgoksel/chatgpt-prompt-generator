@@ -1,3 +1,3 @@
 # chatgpt-prompt-generator README
 
-This extention lets you generate a prompt out of your whole project directory to be given to chatgpt. It includes file directory tree and file contents. 
+This extention lets you select files to be added to a general prompt. This prompt includes file paths and the code included in the file. This lets you create a chatgpt prompt out of related parts of project.
