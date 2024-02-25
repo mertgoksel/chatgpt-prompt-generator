@@ -1,7 +1,7 @@
 {
   "name": "chatgpt-prompt-generator",
   "displayName": "chatgpt prompt generator",
-  "description": "Lets you turn your project into a prompt automatically to be given to chatgpt.",
+  "description": "Lets you create a prompt out of selected files and their respective paths to be given to chatgpt.",
   "publisher": "MertGksel",
   "version": "1.0.0",
   "engines": {
