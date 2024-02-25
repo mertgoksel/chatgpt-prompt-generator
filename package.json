@@ -2,7 +2,8 @@
   "name": "chatgpt-prompt-generator",
   "displayName": "chatgpt prompt generator",
   "description": "Lets you turn your project into a prompt automatically to be given to chatgpt.",
-  "version": "0.0.1",
+  "publisher": "MertGksel",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.86.0"
   },
@@ -14,12 +15,52 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "configuration": {
+      "title": "Project Prompt Generator",
+      "properties": {
+        "projectPromptGenerator.excludedFiles": {
+          "type": "array",
+          "default": [
+            "CHANGELOG.md",
+            "tsconfig.json",
+            "node_modules/**",
+            ".git/**"
+          ],
+          "description": "List of glob patterns for files and directories to exclude from the prompt."
+        }
+      }
+    },
     "commands": [
-      {
-        "command": "extension.generateProjectPrompt",
-        "title": "Generate Project Prompt"
-      } 
-    ]
+        {
+            "command": "extension.addToPromptList",
+            "title": "Add File to Prompt List"
+        },
+        {
+            "command": "extension.createPromptFromList",
+            "title": "Create Prompt from File List"
+        },
+        {
+            "command": "extension.removeFromPromptList",
+            "title": "Edit Prompt List"
+        }
+    ],
+    "menus": {
+        "explorer/context": [
+            {
+                "command": "extension.addToPromptList",
+                "group": "navigation"
+            },
+            {
+                "command": "extension.createPromptFromList",
+                "group": "navigation",
+                "when": "explorerResourceIsFolder==false"
+            },
+            {
+                "command": "extension.removeFromPromptList",
+                "group": "navigation"
+            }
+        ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -30,14 +71,17 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.86.0",
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
+    "@types/vscode": "^1.86.0",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
-    "eslint": "^8.56.0",
-    "typescript": "^5.3.3",
     "@vscode/test-cli": "^0.0.6",
-    "@vscode/test-electron": "^2.3.9"
+    "@vscode/test-electron": "^2.3.9",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "minimatch": "^9.0.3"
   }
 }
